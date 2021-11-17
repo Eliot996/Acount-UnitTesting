@@ -27,6 +27,17 @@ public class Account {
         return balance;
     }
 
+    public int withdraw(int amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Cannot insert negativ numbers into an account");
+        } else if (amount > balance) {
+            //throw new
+        }
+
+        // return the new balance
+        return balance;
+    }
+
     public int getAcountNumber() {
         return acountNumber;
     }
