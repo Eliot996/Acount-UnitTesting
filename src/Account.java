@@ -1,14 +1,14 @@
-public class Acount {
+public class Account {
     private int acountNumber;
     private String clientName;
     private int balance = 0;
 
-    public Acount(int acountNumber, String clientName) {
+    public Account(int acountNumber, String clientName) {
         this.acountNumber = acountNumber;
         this.clientName = clientName;
     }
 
-    public Acount(int acountNumber, String clientName, int balance) {
+    public Account(int acountNumber, String clientName, int balance) {
         this.acountNumber = acountNumber;
         this.clientName = clientName;
         this.balance = balance;
