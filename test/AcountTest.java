@@ -78,4 +78,71 @@ class AcountTest {
         // Assert
         assertEquals(expected, result);
     }
+
+    @Test
+    void testTransfer_WithSmallerThanBalanceNumbers_FromSide() {
+        // arrange
+        Account accountFrom = new Account(1, "Guler", 10);
+        Account accountTarget = new Account(1, "Mathias", 10);
+        int toWithdraw = 4;
+        int expected = 1;
+
+        // Act
+        int result = accountFrom.transfer(toWithdraw, accountTarget);
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testTransfer_WithSmallerThanBalanceNumbers_TargetSide() {
+        // arrange
+        Account accountFrom = new Account(1, "Guler", 10);
+        Account accountTarget = new Account(1, "Mathias", 10);
+        int toWithdraw = 4;
+        int expected = 14;
+
+        // Act
+        accountFrom.transfer(toWithdraw, accountTarget);
+        int result = accountTarget.getBalance();
+
+        // Assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testTransfer_WithlargerThanBalanceNumbers() {
+        // arrange
+        Account accountFrom = new Account(1, "Guler", 10);
+        Account accountTarget = new Account(1, "Mathias", 10);
+        int toWithdraw = 10;
+
+        // Act & Assert
+        assertThrows(TooLowBalanceException.class,
+                () -> accountFrom.transfer(toWithdraw, accountTarget));
+    }
+
+    @Test
+    void testTransfer_WithNegativeNumbers() {
+        // arrange
+        Account accountFrom = new Account(1, "Guler", 10);
+        Account accountTarget = new Account(1, "Mathias", 10);
+        int toWithdraw = -5;
+
+        // Act & Assert
+        assertThrows(IllegalArgumentException.class,
+                () -> accountFrom.transfer(toWithdraw, accountTarget));
+    }
+
+    @Test
+    void testTransfer_WithTargetIsNull() {
+        // arrange
+        Account accountFrom = new Account(1, "Guler", 10);
+        Account accountTarget = null;
+        int toWithdraw = -5;
+
+        // Act & Assert
+        assertThrows(IllegalArgumentException.class,
+                () -> accountFrom.transfer(toWithdraw, accountTarget));
+    }
 }
