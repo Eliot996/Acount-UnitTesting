@@ -1,4 +1,4 @@
-public class TooLowBalanceException extends Exception{
+public class TooLowBalanceException extends RuntimeException{
 
     public TooLowBalanceException (String errorMessage){
         super(errorMessage);
