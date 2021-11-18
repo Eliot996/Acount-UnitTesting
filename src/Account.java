@@ -1,15 +1,15 @@
 public class Account {
-    private int acountNumber;
-    private String clientName;
+    private final int accountNumber;
+    private final  String clientName;
     private int balance = 0;
 
     public Account(int acountNumber, String clientName) {
-        this.acountNumber = acountNumber;
+        this.accountNumber = acountNumber;
         this.clientName = clientName;
     }
 
     public Account(int acountNumber, String clientName, int balance) {
-        this.acountNumber = acountNumber;
+        this.accountNumber = acountNumber;
         this.clientName = clientName;
         this.balance = balance;
     }
@@ -41,15 +41,10 @@ public class Account {
         return balance;
     }
 
-    public int getAcountNumber() {
-        return acountNumber;
-    }
-
-    public String getClientName() {
-        return clientName;
-    }
-
-    public int getBalance() {
-        return balance;
+    @Override
+    public String toString() {
+        return "Account number: " + accountNumber + '\n' +
+                "Client Name: '" + clientName + '\n' +
+                "Balance: " + balance;
     }
 }
