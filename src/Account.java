@@ -29,10 +29,13 @@ public class Account {
 
     public int withdraw(int amount) {
         if (amount < 0) {
-            throw new IllegalArgumentException("Cannot insert negativ numbers into an account");
+            throw new IllegalArgumentException("Cannot withdraw negativ numbers from an account");
         } else if (amount > balance) {
-            //throw new
+            throw new TooLowBalanceException("The account balance is to low");
         }
+
+        // subtract
+        balance -= amount;
 
         // return the new balance
         return balance;
