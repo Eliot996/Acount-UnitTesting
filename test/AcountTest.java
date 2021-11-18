@@ -42,4 +42,40 @@ class AcountTest {
         assertThrows(IllegalArgumentException.class,
                 () -> account.insert(toAdd));
     }
+
+    @Test
+    void testWithdraw_WithNegativeNumbers(){
+        // arrange
+        Account account = new Account(1, "guler", 11);
+        int toWithdraw = -10;
+
+        // Act & Assert
+        assertThrows(IllegalArgumentException.class,
+                () -> account.withdraw(toWithdraw));
+    }
+
+    @Test
+    void testWithdraw_WithLargerThanBalanceNumbers(){
+        // arrange
+        Account account = new Account(1, "guler",9);
+        int toWithdraw = 10;
+
+        // Act & Assert
+        assertThrows(TooLowBalanceException.class,
+                () -> account.withdraw(toWithdraw));
+    }
+
+    @Test
+    void testWithdraw_WithSmallerThanBalanceNumbers() {
+        // arrange
+        Account account = new Account(1, "guler", 10);
+        int toWithdraw = 9;
+        int expected = 1;
+
+        // Act
+        int result = account.withdraw(toWithdraw);
+
+        // Assert
+        assertEquals(expected, result);
+    }
 }
