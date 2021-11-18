@@ -47,7 +47,7 @@ public class Account {
             throw new IllegalArgumentException("Cannot transfer negativ numbers from an account");
         } else if (amount + TRANSFER_FEE > balance) {
             throw new TooLowBalanceException("The account balance is to low");
-        } else if (target != null) {
+        } else if (target == null) {
             throw new IllegalArgumentException("Cannot transfer to an nonexsisting account");
         }
 
